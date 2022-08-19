@@ -7,3 +7,49 @@ header {
   text-decoration: none;
 }
 
+body {
+  font-family: monospace;
+  text-align: center;
+}
+
+/* Each section is centered horizantally and vertically*/
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Each section has their elements centered in the viewport */
+section {
+  height: 100vh;
+  width: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Buttons display in a colum in the center */
+.answer_options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Buttons expand to fit content, have some margin and padding to make bigger*/
+button {
+  font-family: monospace;
+  height: fit-content;
+  width: fit-content;
+  padding: 1em;
+  margin: 1em;
+}
+
+section
+
+
+/* display: none means element is removed from the page :) hehe */
+/* need to put this inline somehow so that our JS can change it */
+/* will need some sort of data-set on all sections 
