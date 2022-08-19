@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Quiz</title>
+
+  <!--CSS Linked-->
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <header>
+    <p id="high_scores"><a href="#">High Scores</a></p>
+    <p id="timer">Timer</p>
+  </header>
+
+  <main>
+    <!-- Welcome Message -->
+    <section id="welcome_message">
+      <h1>Welcome to the Quiz</h1>
+      <p>
+        This is a coding quiz.
+        You have 60 seconds to complete the quiz
+        If you answer incorrectly, you lose 10 seconds.
+        Good luck!
+      </p>
+      <button>Start Quiz</button>
+    </section>
+
+    <!-- Question #1 -->
+    <section id="question_1">
+      <p class="question">What is an object in JavaScript?</p>
+      <div class="answer_options">
+        <button>1. Answer</button>
+        <button>2. Answer</button>
+        <button>3. Answer</button>
+        <button>4. Answer</button>
+      </div>
+    </section>
+
+    <!-- Question #2 -->
+    <section id="question_2">
+      <p class="question">What is ...?</p>
+      <div class="answer_options">
+        <button>1. Answer</button>
+        <button>2. Answer</button>
+        <button>3. Answer</button>
+        <button>4. Answer</button>
+      </div>
+    </section>
+
+    <!-- Question #3 -->
+    <section id="question_3">
+      <p class="question">What is ...?</p>
+      <div class="answer_options">
+        <button>1. Answer</button>
+        <button>2. Answer</button>
+        <button>3. Answer</button>
+        <button>4. Answer</button>
+      </div>
+    </section>
+
+    <!-- Save scores page -->
+    <section>
+      <h2>Game Over</h2>
+      <p>Your final score is </p>
+      <form>
+        <label for="enter_initials">Enter initials:</label>
+        <input type="text" id="enter_initials" name="enter_initials">
+      </form>
+      <div>
+        <button id="save_score">Save</button>
+        <button id="go back">Go back</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- High Scores Page -->
+  <section>
+    <h2>High Scores</h2>
+    <ul>
+      <li> </li>
+      <li> </li>
+      <li> </li>
+    </ul>
+  </section>
+</main>
+
+
+</body>
+<script src="./script.js"></script>
+</html>
