@@ -1,6 +1,15 @@
 header {
   display: inline;
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+
+}
+
+/*High Score Button */
+#high_scores {
+  text-align: right;
 }
 
 #high_scores {
@@ -46,10 +55,3 @@ button {
   padding: 1em;
   margin: 1em;
 }
-
-section
-
-
-/* display: none means element is removed from the page :) hehe */
-/* need to put this inline somehow so that our JS can change it */
-/* will need some sort of data-set on all sections 

@@ -14,12 +14,14 @@
 <body>
 
   <header>
-    <p id="high_scores"><a href="#">High Scores</a></p>
-    <p id="timer">Timer</p>
+    <!-- High Score Button-->
+    <button id="high_scores">High Scores</button>
+    <!-- Timer Element -->
+    <p>Time: <span id="seconds_remaining">60</span></p>
   </header>
 
   <main>
-    <!-- Welcome Message -->
+    <!-- Welcome Message and Start Quiz -->
     <section id="welcome_message">
       <h1>Welcome to the Quiz</h1>
       <p>This is a coding quiz.</p>
@@ -27,56 +29,55 @@
       <p>If you answer incorrectly, you lose 10 seconds.</p>
       <p>Good luck!</p>
       </p>
-      <button>Start Quiz</button>
+      <button id="start_button">Start Quiz</button>
     </section>
 
     <!-- Question #1 -->
-    <section id="question_1">
+    <section id="question_1" class="question">
       <p class="question">What is an object in JavaScript?</p>
       <div class="answer_options">
         <button>1. Answer</button>
         <button>2. Answer</button>
-        <button>3. Answer</button>
+        <button class="correct_answer">3. Answer</button>
         <button>4. Answer</button>
-        <p>Correct</p>
       </div>
     </section>
 
     <!-- Question #2 -->
-    <section id="question_2">
+    <section id="question_2" class="question">
       <p class="question">What is ...?</p>
       <div class="answer_options">
         <button>1. Answer</button>
-        <button>2. Answer</button>
+        <button class="correct_answer">2. Answer</button>
         <button>3. Answer</button>
         <button>4. Answer</button>
-        <p>Correct</p>
+        <p class="correct_wrong_message">Correct</p>
       </div>
     </section>
 
     <!-- Question #3 -->
-    <section id="question_3">
+    <section id="question_3" class="question">
       <p class="question">What is ...?</p>
       <div class="answer_options">
         <button>1. Answer</button>
         <button>2. Answer</button>
         <button>3. Answer</button>
-        <button>4. Answer</button>
-        <p>Correct</p>
+        <button  class="correct_answer">4. Answer</button>
+        <p class="correct_wrong_message">Correct</p>
       </div>
     </section>
 
-    <!-- Save scores page -->
+    <!-- Game Over page -->
     <section id="game_over">
       <h2>Game Over</h2>
-      <p>Your final score is </p>
+      <p>Your final score is: <span id="final_score">0</span></p>
       <form>
         <label for="enter_initials">Enter initials:</label>
-        <input type="text" id="enter_initials" name="enter_initials">
+        <input type="text" id="enter_initials" name="enter_initials" placeholder="E.M.">
       </form>
       <div>
-        <button id="save_score">Save</button>
-        <button id="go back">Go back</button>
+        <button id="save_button">Save</button>
+        <button id="play_again_button">Play Again</button>
       </div>
     </section>
   </main>
