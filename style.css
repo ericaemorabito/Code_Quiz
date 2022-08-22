@@ -56,6 +56,11 @@ button {
   margin: 1em;
 }
 
+/* Correct and Wrong Message */
+.correct_wrong_message {
+  color: green;
+}
+
 /* Rendered pages hidden and visible */
 [data-state = "hidden"] {
   display: none;
