@@ -131,5 +131,9 @@ function startTimer() {
 }
 
 //TODO: Timer loses 10 seconds
+function loseTenSeconds() {
+	time = time - 10;
+}
+
 //TODO: End Game
 //TODO: Show highscores page
