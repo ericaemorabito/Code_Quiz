@@ -29,7 +29,7 @@ main {
   align-items: center;
 }
 
-/*Each section has their elements centered in the viewport */
+/* Each section has their elements centered in the viewport */
 section {
   height: 100vh;
   width: 100vh;
@@ -39,7 +39,7 @@ section {
   align-items: center;
 }
 
-/*Buttons display in a colum in the center */
+/* Buttons display in a collumn in the center */
 .answer_options {
   display: flex;
   flex-direction: column;
@@ -47,11 +47,20 @@ section {
   align-items: center;
 }
 
-/*Buttons expand to fit content, have some margin and padding to make bigger*/
+/* Buttons expand to fit content, have some margin and padding to make bigger*/
 button {
   font-family: monospace;
   height: fit-content;
   width: fit-content;
   padding: 1em;
   margin: 1em;
+}
+
+/* Rendered pages hidden and visible */
+[data-state = "hidden"] {
+  display: none;
+} 
+
+[data-state = "visible"] {
+  display: block;
 }

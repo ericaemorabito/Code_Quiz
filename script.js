@@ -32,18 +32,14 @@ var highScoresPage = document.getElementById("high_score_page");
 //Game starts with 60 seconds
 var time = 60;
 
-//How page is when it is loaded
-function init () {
-  //Pages that are hidden
-  welcomePage.style.display = 'none';
-}
-function init();
-
 //Starting Quiz when button clicked
 function startQuiz() {
   startButton.addEventListener('click', function() {
     startTimer();
-    console.log('testing')
+    // Hides the welcome page
+    welcomePage.setAttribute("data-state", "hidden");
+    // Shows question 1
+    questionOnePage.setAttribute("data-state", "visible");
   })
   };
 
@@ -68,11 +64,3 @@ function startTimer() {
 //JavaScript to hide/reveal things
 //element.style.display = "none";
 //element.style.display = "block";
-
-//Function lose 10 seconds
-function loseTenSeconds () {
-  //if wrong answer button clicked {
-    //timer goes down by 10 seconds
-    //if time < 10 then time becomes 0 
-    //timer continues to end at 0
-  }
