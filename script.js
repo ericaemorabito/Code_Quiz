@@ -25,9 +25,6 @@ var questionThreePage = document.getElementById("question_3");
 var gameOverPage = document.getElementById("game_over");
 var highScoresPage = document.getElementById("high_score_page");
 
-//TODO: an object for each question with answer etc.
-//
-
 //Functions for showing and hiding each page
 var hideWelcome = function() {
   welcomePage.setAttribute("data-state", "hidden");
@@ -85,46 +82,59 @@ var wrongAnswerClicked = function(){
 //Game starts with 30 seconds
 var time = 30;
 
-//Starting Quiz when button clicked
+//Start Button Clicked
+startButton.addEventListener('click', function () {
+  startTimer();
+  hideWelcome();
+  showQ1();
+  startQuiz();
+});
+
+//Starting Quiz Questions
 function startQuiz() {
-  startButton.addEventListener('click', function() {
-    startTimer();
-    hideWelcome();
-    showQ1(); })
 
-//Question One
-//1st tried: questionOnePage.dataset.state === "visible"
-//2nd try: questionOnePage.getAttribute("data-state") === "visible"
-//3rd try: questionOnePage.matches("data-state="hidden""")
-
-  if (questionOnePage.dataset.state === "visible"){
+  //Question One Visible Then ... 
+    if (questionOnePage.dataset.state === "visible"){
       console.log("Question One is Visible!");
+      correctAnswer.addEventListener('click', function(){
+        hideQ1();
+        showQ2();
+      })
+      wrongAnswer.addEventListener('click', function() {
+        hideQ1();
+        showQ2();
+        displayWrongMessage();
+      })
+    }
 
-    // correctAnswer.addEventListener('click', function() {
-    //   console.log("answer button clicked");
-    //   hideQ1();
-    //   showQ2();
-    // });
-    // wrongAnswer.addEventListener('click', function(){
-    //   hideQ1();
-    //   showQ2();
-    // })
-  }
-  };
+    //Question TWo Visible
+    if (questionTwoPage.dataset.state === "visible"){
+      console.log("Question two is visible!")
+      correctAnswer.addEventListener('click', function(){
+        hideQ2();
+        showQ3();
+      })
+      wrongAnswer.addEventListener('click', function() {
+        hideQ2();
+        showQ3();
+        displayWrongMessage();
+      })
+    }
 
-  //Question Two
-  // if (questionTwoPage.hasAttribute("data-state", "visible")) {
-  //   correctAnswer.addEventListener('click', function() {
-  //     hideQ2();
-  //     showQ3();
-  //   });
-  //   wrongAnswer.addEventListener('click', function() {
-  //     hideQ2();
-  //     showQ3();
-  //     displayWrongMessage();
-  //   });`
-    
-  // };
+    //Question Three Visible
+    if (questionThreePage.dataset.state === "visible"){
+      console.log("Question three is visible!")
+      correctAnswer.addEventListener('click', function(){
+        hideQ3();
+        showGameOver();
+      })
+      wrongAnswer.addEventListener('click', function() {
+        hideQ2();
+        showGameOver();
+      })
+    }
+
+}
 
 startQuiz();
 
@@ -148,4 +158,8 @@ function loseTenSeconds() {
 }
 
 //TODO: End Game
+
 //TODO: Show highscores page
+// if (highscore button clicked) {
+//    show high scores page
+//}
