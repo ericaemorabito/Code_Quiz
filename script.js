@@ -3,13 +3,9 @@
 //Start Button
 var startButton = document.getElementById("start_button");
 //Save score button
-var saveButton = document.getElementById("start_button");
+var saveButton = document.getElementById("save_button");
 //Time remaining
 var timeRemaining = document.getElementById("seconds_remaining");
-//Correct answer button
-var correctAnswer = document.querySelector(".correct_answer");
-// Wrong answer buttons
-var wrongAnswer = document.querySelector(".wrong_answer");
 //Correct and wrong message
 var correctOrWrongMessage = document.querySelector(".correct_wrong_message");
 //play Again button
@@ -19,9 +15,6 @@ var finalScore = document.getElementById("final_score");
 
 //Each Page
 var welcomePage = document.getElementById("welcome_message");
-var questionOnePage = document.getElementById("question_1");
-var questionTwoPage = document.getElementById("question_2");
-var questionThreePage = document.getElementById("question_3");
 var gameOverPage = document.getElementById("game_over");
 var highScoresPage = document.getElementById("high_score_page");
 
@@ -29,35 +22,9 @@ var highScoresPage = document.getElementById("high_score_page");
 var hideWelcome = function() {
   welcomePage.setAttribute("data-state", "hidden");
 }
-
-var showQ1 = function() {
-  questionOnePage.setAttribute("data-state", "visible");
-}
-
-var hideQ1 = function() {
-  questionOnePage.setAttribute("data-state", "hidden");
-}
-
-var showQ2 = function() {
-  questionTwoPage.setAttribute("data-state", "visible");
-}
-
-var hideQ2 = function() {
-  questionTwoPage.setAttribute("date-state", "hidden")
-}
-
-var showQ3 = function() {
-  questionThreePage.setAttribute("data-state", "visible");
-}
-
-var hideQ3 = function() {
-  questionThreePage.setAttribute("date-state", "hidden")
-}
-
 var showGameOver = function() {
   gameOverPage.setAttribute("data-state", "visible");
 }
-
 var showHighScores = function() {
   highScoresPage.setAttribute("data-state", "visible");
 }
@@ -69,74 +36,8 @@ var displayWrongMessage = function(){
   
 }
 
-//TODO: Correct answer is clicked --DIDN'T WORK WITHIN FUNCTION
-var correctAnswerClicked = function() {
-  correctAnswer.addEventListener("click");
-}
-
-//TODO: Wrong answer is clicked --DIDN'T WORK IN FUNCTION
-var wrongAnswerClicked = function(){
-  wrongAnswer.addEventListener("click");
-}
-
 //Game starts with 30 seconds
 var time = 30;
-
-//Start Button Clicked
-startButton.addEventListener('click', function () {
-  startTimer();
-  hideWelcome();
-  showQ1();
-  startQuiz();
-});
-
-//Starting Quiz Questions
-function startQuiz() {
-
-  //Question One Visible Then ... 
-    if (questionOnePage.dataset.state === "visible"){
-      console.log("Question One is Visible!");
-      correctAnswer.addEventListener('click', function(){
-        hideQ1();
-        showQ2();
-      })
-      wrongAnswer.addEventListener('click', function() {
-        hideQ1();
-        showQ2();
-        displayWrongMessage();
-      })
-    }
-
-    //Question TWo Visible
-    if (questionTwoPage.dataset.state === "visible"){
-      console.log("Question two is visible!")
-      correctAnswer.addEventListener('click', function(){
-        hideQ2();
-        showQ3();
-      })
-      wrongAnswer.addEventListener('click', function() {
-        hideQ2();
-        showQ3();
-        displayWrongMessage();
-      })
-    }
-
-    //Question Three Visible
-    if (questionThreePage.dataset.state === "visible"){
-      console.log("Question three is visible!")
-      correctAnswer.addEventListener('click', function(){
-        hideQ3();
-        showGameOver();
-      })
-      wrongAnswer.addEventListener('click', function() {
-        hideQ2();
-        showGameOver();
-      })
-    }
-
-}
-
-startQuiz();
 
 //Timer
 function startTimer() {
@@ -157,9 +58,48 @@ function loseTenSeconds() {
 	time = time - 10;
 }
 
-//TODO: End Game
+//TODO: new code below
 
-//TODO: Show highscores page
-// if (highscore button clicked) {
-//    show high scores page
-//}
+// Selects the question section element
+var questionPage = document.getElementById("question_page");
+
+// Shows the question page
+var showQuestionPage = function() {
+  questionPage.setAttribute("data-state", "visible");
+}
+
+//Question Element
+var questionElement = document.getElementById(".question");
+
+// Start Button Clicked - invokes the start Quiz
+startButton.addEventListener('click', startQuiz ());
+
+//Starting Quiz = Showing the questions
+function startQuiz() {
+  console.log("The game has started!")
+  startTimer();
+  hideWelcome();
+  //Show questions
+  nextQuestion();
+};
+
+function nextQuestion() {
+
+}
+
+const questionList = [
+  {
+    question: "What is question 1?",
+    answers: [
+      {option: A, correct: true}, 
+      {option: B, correct: false},
+    ]
+  } ,
+  {
+    question: "What is question 2?" , 
+    answers: [
+      {option: A, correct: false},
+      {option: B, correct: true}
+    ]
+  }
+]
