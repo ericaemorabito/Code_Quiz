@@ -29,13 +29,6 @@ var showHighScores = function() {
   highScoresPage.setAttribute("data-state", "visible");
 }
 
-//Function for displaying wrong message
-var displayWrongMessage = function(){
-  correctOrWrongMessage.innerHTML = "Wrong";
-  correctOrWrongMessage.setAttribute("style", "red");
-  
-}
-
 //Game starts with 60 seconds
 var time = 60;
 
@@ -61,12 +54,12 @@ function loseTenSeconds() {
 //TODO: new code below
 // Selects the question section element
 var questionPage = document.getElementById("question_page");
-
 // Question <p> Element
-var questionElement = document.getElementById(".question");
-
-// Answer options <div> Element
-var answerOptions = document.getElementById("answer_btn");
+var questionElement = document.getElementById("question");
+console.log(questionElement)
+//Answer buttons
+var answerButtons = document.querySelectorAll(".answer_btn");
+console.log(answerButtons)
 
 // Start Button Clicked - invokes the start Quiz
 startButton.addEventListener('click', function(){
@@ -78,39 +71,28 @@ var showQuestionPage = function() {
   questionPage.setAttribute("data-state", "visible");
 }
 
-//Starting Quiz = Showing the questions
+//  Starting the quiz
 function startQuiz() {
   console.log("The game has started!")
   startTimer();
   hideWelcome();
   //Show questions
   showQuestionPage();
-  setQuestion(); //TODO:`
-  nextQuestion(); //TODO:
+  if (answerButtons.addEventListener('click')) { //if answer buttons are clicked then populate question with new question & answer
+    newQuestion();
+  };
+  newQuestions(); //TODO:
 };
 
-function setQuestion() {
-  questionElement.innerHTML = questionList.question
-  questionList.answers.forEach(answer, )
+//TODO: write a function that specifically populates the question and its answers, and then invoke that function in the if statement
+
+function newQuestion() {
+  for (i=0; i < questionList.length; i++){
+    questionElement.innerHTML = questionList[i].question
+    for (i=0; i < questionList.answer.length; i++)
+    answerButtons.innerHTML = questionList.answer[i].option
+  }
 }
-
-function nextQuestion() {
-
-}
-
-// function showQuestion(question) {
-//   questionElement.innerText = question.question
-//   question.answers.forEach(answer => {
-//     const button = document.createElement('button')
-//     button.innerText = answer.text
-//     button.classList.add('btn')
-//     if (answer.correct) {
-//       button.dataset.correct = answer.correct
-//     }
-//     button.addEventListener('click', selectAnswer)
-//     answerButtonsElement.appendChild(button)
-//   })
-// }
 
 const questionList = [
   {
@@ -128,3 +110,5 @@ const questionList = [
     ]
   }
 ]
+
+console.log(questionList.answer)
