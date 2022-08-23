@@ -25,6 +25,9 @@ var questionThreePage = document.getElementById("question_3");
 var gameOverPage = document.getElementById("game_over");
 var highScoresPage = document.getElementById("high_score_page");
 
+//TODO: an object for each question with answer etc.
+//
+
 //Functions for showing and hiding each page
 var hideWelcome = function() {
   welcomePage.setAttribute("data-state", "hidden");
@@ -86,33 +89,42 @@ var time = 30;
 function startQuiz() {
   startButton.addEventListener('click', function() {
     startTimer();
-    // Hides the welcome page
     hideWelcome();
-    // Shows question 1
     showQ1(); })
-  
-  //correct answer button clicked --WORKS
-  correctAnswer.addEventListener('click', function() {
-    hideQ1();
-    showQ2();})
-  
-    //TODO:wrong answer button clicked
-  wrongAnswer.addEventListener('click', function() {
-    hideQ1();
-    showQ2();
-    displayWrongMessage();
-  })
 
-  //TRYING - make everything into their own function to not repeat
-  // if (correctAnswerClicked) {
-  //   hideQ1();
-  //   showQ2();
-  // } else if (wrongAnswerClicked) {
-  //   hideQ1();
-  //   showQ2();
-  //   displayWrongMessage(); }
- };
+//Question One
+//1st tried: questionOnePage.dataset.state === "visible"
+//2nd try: questionOnePage.getAttribute("data-state") === "visible"
+//3rd try: questionOnePage.matches("data-state="hidden""")
 
+  if (questionOnePage.dataset.state === "visible"){
+      console.log("Question One is Visible!");
+
+    // correctAnswer.addEventListener('click', function() {
+    //   console.log("answer button clicked");
+    //   hideQ1();
+    //   showQ2();
+    // });
+    // wrongAnswer.addEventListener('click', function(){
+    //   hideQ1();
+    //   showQ2();
+    // })
+  }
+  };
+
+  //Question Two
+  // if (questionTwoPage.hasAttribute("data-state", "visible")) {
+  //   correctAnswer.addEventListener('click', function() {
+  //     hideQ2();
+  //     showQ3();
+  //   });
+  //   wrongAnswer.addEventListener('click', function() {
+  //     hideQ2();
+  //     showQ3();
+  //     displayWrongMessage();
+  //   });`
+    
+  // };
 
 startQuiz();
 
@@ -130,7 +142,7 @@ function startTimer() {
   }, 1000);
 }
 
-//TODO: Timer loses 10 seconds
+// Timer loses 10 seconds
 function loseTenSeconds() {
 	time = time - 10;
 }
