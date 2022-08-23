@@ -36,8 +36,8 @@ var displayWrongMessage = function(){
   
 }
 
-//Game starts with 30 seconds
-var time = 30;
+//Game starts with 60 seconds
+var time = 60;
 
 //Timer
 function startTimer() {
@@ -59,20 +59,24 @@ function loseTenSeconds() {
 }
 
 //TODO: new code below
-
 // Selects the question section element
 var questionPage = document.getElementById("question_page");
+
+// Question <p> Element
+var questionElement = document.getElementById(".question");
+
+// Answer options <div> Element
+var answerOptions = document.getElementById("answer_btn");
+
+// Start Button Clicked - invokes the start Quiz
+startButton.addEventListener('click', function(){
+  startQuiz()
+});
 
 // Shows the question page
 var showQuestionPage = function() {
   questionPage.setAttribute("data-state", "visible");
 }
-
-//Question Element
-var questionElement = document.getElementById(".question");
-
-// Start Button Clicked - invokes the start Quiz
-startButton.addEventListener('click', startQuiz ());
 
 //Starting Quiz = Showing the questions
 function startQuiz() {
@@ -80,26 +84,47 @@ function startQuiz() {
   startTimer();
   hideWelcome();
   //Show questions
-  nextQuestion();
+  showQuestionPage();
+  setQuestion(); //TODO:`
+  nextQuestion(); //TODO:
 };
+
+function setQuestion() {
+  questionElement.innerHTML = questionList.question
+  questionList.answers.forEach(answer, )
+}
 
 function nextQuestion() {
 
 }
 
+// function showQuestion(question) {
+//   questionElement.innerText = question.question
+//   question.answers.forEach(answer => {
+//     const button = document.createElement('button')
+//     button.innerText = answer.text
+//     button.classList.add('btn')
+//     if (answer.correct) {
+//       button.dataset.correct = answer.correct
+//     }
+//     button.addEventListener('click', selectAnswer)
+//     answerButtonsElement.appendChild(button)
+//   })
+// }
+
 const questionList = [
   {
     question: "What is question 1?",
     answers: [
-      {option: A, correct: true}, 
-      {option: B, correct: false},
+      {option: 'A', correct: true}, 
+      {option: 'B', correct: false},
     ]
   } ,
   {
     question: "What is question 2?" , 
     answers: [
-      {option: A, correct: false},
-      {option: B, correct: true}
+      {option: 'A', correct: false},
+      {option: 'B', correct: true}
     ]
   }
 ]
