@@ -9,7 +9,7 @@ var gameOverPage = document.getElementById("game_over");
 var highScoresPage = document.getElementById("high_score_page");
 var questionPage = document.getElementById("question_page");
 var questionElement = document.getElementById("question");
-var answerButtons = document.querySelectorAll(".answer_btn");
+var answerArea = document.getElementById("answer_options")
 
 //Functions for showing and hiding each page
 var hideWelcome = function() {
@@ -20,6 +20,9 @@ var showGameOver = function() {
 }
 var showHighScores = function() {
   highScoresPage.setAttribute("data-state", "visible");
+}
+var showQuestionPage = function() {
+  questionPage.setAttribute("data-state", "visible");
 }
 
 //Game starts with 60 seconds
@@ -46,30 +49,48 @@ function loseTenSeconds() {
 
 // Start Button Clicked - invokes the start Quiz
 startButton.addEventListener('click', function(){
-  startQuiz()
-});
-
-// Shows the question page
-var showQuestionPage = function() {
-  questionPage.setAttribute("data-state", "visible");
-}
-
-// Starting the quiz - starts timer, hides welcome page, shows the question page
-function startQuiz() {
   startTimer();
   hideWelcome();
   showQuestionPage();
-  };
+  nextQuestion(); //TODO:
+  displayNewQuestion(); //TODO:
+});
 
-//Event listener for each answer button
-//TODO: populates the new questions
-for (var i = 0; i < answerButtons.length; i++){ 
-  answerButtons[i].addEventListener('click', function(){
-    console.log("answer clicked");
-    newQuestion();//when answer buttons clicked, choose the next question, choose the next answers,
-    displayNewQuestion(); //display new questoin and answers in the HTML
-  })
+//TODO: ...
+var index = 0; 
+
+var nextQuestion = function() {
+  if (index < questionList.length) { //if index is less than number of question in list
+
+    var answers = questionList[index].answers //get the array of answer options
+
+    for (let i  = 0; i < answers.length; i ++){ // create a button for each answer in the area and set content to answer text
+      var newAnswerButton = document.createElement("button");
+      newAnswerButton.textContent = answers[i];
+      answerArea.appendChild(newAnswerButton)
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//TODO: populates the new questions
+// for (var i = 0; i < answerButtons.length; i++){ 
+//   answerButtons[i].addEventListener('click', function(){
+//     console.log("answer clicked");
+//     newQuestion();/
+//     displayNewQuestion(); 
+//   })
+// }
 
 const questionList = [
   { //index 0
@@ -87,20 +108,15 @@ var question;
 var answers;
 
 //TODO: iterate through questionList array choosing each question string and answers array
-var newQuestion = function(){
-  for (i=0; i < questionList.length; i++){
-    var question = questionList[i].question; //This is the string in each index of questionList.question
-    var answers = questionList[i].answers //This is the array of strings containing the answer options in current question in questionList array
-  }
-}
-newQuestion();
-// console.log(questionList[0].question)
-// console.log(questionList[1].question)
-// console.log(questionList[0].answers)
-// console.log(questionList[1].answers)
+// var newQuestion = function(){
+//   for (i=0; i < questionList.length; i++){
+//     var question = questionList[i].question; //This is the string in each index of questionList.question
+    // var answers = questionList[i].answers //This is the array of strings containing the answer options in current question in questionList array
+//   }
+// }
 
 //TODO: print chosen question and answers to the HTML
-function displayNewQuestion(){
-  questionElement.innerHTML = question; //display question in question Element
-  answerButtons.innerHTML = answersArray; //TODO: How to put this array of strings into each button
-}
+// function displayNewQuestion(){
+//   questionElement.innerHTML = question;
+//   answerButtons.innerHTML = answersArray; 
+// }
