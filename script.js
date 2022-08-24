@@ -81,9 +81,8 @@ function startQuiz() {
 for (var i = 0; i < answerButtons.length; i++){ 
   answerButtons[i].addEventListener('click', function(){
     console.log("answer clicked");
-    chooseQuestion();//when answer buttons clicked, choose the next question, choose the next answers, and display those in HTML .innerHTML
-    chooseAnswers();
-    displayNewQuestion();
+    newQuestion();//when answer buttons clicked, choose the next question, choose the next answers,
+    displayNewQuestion(); //display new questoin and answers in the HTML
   })
 }
 
@@ -94,38 +93,29 @@ const questionList = [
   }, 
   {
     question: "What is question 2?",
-    answers: [ "2nd Q  1st answer" , "2nd Q 2nd answer"]
+    answers: [ "First answer q2" , "Second answer q2"]
   }
 ]
 
-// Acces which question- logs "What is question 1?"
-console.log(questionList[0].question); 
-
-// Access answers within the question - logs Q1 A1
-console.log(questionList[0].answers[0]);
-console.log(questionList[0].answers)
-
 //TODO: write a function that specifically populates the question and its answers
+var question;
+var answersArray;
 
-var currentQuestion;
-var currentAnswers;
-
-//Choose next question in the questionList array
-function chooseQuestion(){
+//TODO: iterate through questionList array choosing each question string and answers array
+var newQuestion = function(){
   for (i=0; i < questionList.length; i++){
-    var currentQuestion = questionList[i];
+    var question = questionList[i].question; //This is the string in each index of questionList.question
+    var answersArray = questionList[i].answers //This is the array of strings containing the answer options in current question in questionList array
   }
 }
-console.log(questionList[1])
+newQuestion();
+// console.log(questionList[0].question)
+// console.log(questionList[1].question)
+// console.log(questionList[0].answers)
+// console.log(questionList[1].answers)
 
-function chooseAnswers(){
-  for (i=0; i < questionList.length; i++){
-    var currentAnswers = currentQuestion.answers[i]
-  }
-}
-
-//TODO: function to print the chosen question and answers to the HTML
+//TODO: print chosen question and answers to the HTML
 function displayNewQuestion(){
-  // currentQuestion = questionElement.innerHTML
-  // currentAnswers = answerButtons.innerHTML
+  questionElement.innerHTML = question; //display question in question Element
+  answerButtons.innerHTML = answersArray; //TODO: How to put this array of strings into each button
 }
