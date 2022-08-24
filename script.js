@@ -58,12 +58,17 @@ startButton.addEventListener('click', function(){
 
 //TODO: ...
 var index = 0; 
+var question;
+var newAnswerButton;
 
 var nextQuestion = function() {
-  if (index < questionList.length) { //if index is less than number of question in list
+  //TODO: question not working
+  //Populate question
+  if (index < questionList.length) { //if index is less than number of question in the list
+    var question = questionList[index].question //gets the string stored in question key
+    questionElement.textContent = question;// put string into question element
 
-    var answers = questionList[index].answers //get the array of answer options
-
+    var answers = questionList[index].answers //gets the array of answer options
     for (let i  = 0; i < answers.length; i ++){ // create a button for each answer in the area and set content to answer text
       var newAnswerButton = document.createElement("button");
       newAnswerButton.textContent = answers[i];
@@ -113,10 +118,4 @@ var answers;
 //     var question = questionList[i].question; //This is the string in each index of questionList.question
     // var answers = questionList[i].answers //This is the array of strings containing the answer options in current question in questionList array
 //   }
-// }
-
-//TODO: print chosen question and answers to the HTML
-// function displayNewQuestion(){
-//   questionElement.innerHTML = question;
-//   answerButtons.innerHTML = answersArray; 
 // }
