@@ -56,10 +56,9 @@ function loseTenSeconds() {
 var questionPage = document.getElementById("question_page");
 // Question <p> Element
 var questionElement = document.getElementById("question");
-console.log(questionElement)
 //Answer buttons
 var answerButtons = document.querySelectorAll(".answer_btn");
-console.log(answerButtons)
+
 
 // Start Button Clicked - invokes the start Quiz
 startButton.addEventListener('click', function(){
@@ -71,44 +70,62 @@ var showQuestionPage = function() {
   questionPage.setAttribute("data-state", "visible");
 }
 
-//  Starting the quiz
+// Starting the quiz - starts timer, hides welcome page, shows the question page
 function startQuiz() {
-  console.log("The game has started!")
   startTimer();
   hideWelcome();
-  //Show questions
   showQuestionPage();
-  if (answerButtons.addEventListener('click')) { //if answer buttons are clicked then populate question with new question & answer
-    newQuestion();
   };
-  newQuestions(); //TODO:
-};
 
-//TODO: write a function that specifically populates the question and its answers, and then invoke that function in the if statement
-
-function newQuestion() {
-  for (i=0; i < questionList.length; i++){
-    questionElement.innerHTML = questionList[i].question
-    for (i=0; i < questionList.answer.length; i++)
-    answerButtons.innerHTML = questionList.answer[i].option
-  }
+//TODO: Event listener for each answer button & populates the new questions
+for (var i = 0; i < answerButtons.length; i++){ 
+  answerButtons[i].addEventListener('click', function(){
+    console.log("answer clicked")//function here
+    newQuestion();//when answer buttons clicked, populate question & buttons with new question & answer options from questions object
+  })
 }
 
 const questionList = [
-  {
+  { //index 0
     question: "What is question 1?",
     answers: [
-      {option: 'A', correct: true}, 
-      {option: 'B', correct: false},
+      {option: "Answer A", correct: true},
+      {option: "Answer B", correct: false}
     ]
-  } ,
+  }, 
   {
-    question: "What is question 2?" , 
+    question: "What is question 2?",
     answers: [
-      {option: 'A', correct: false},
-      {option: 'B', correct: true}
+      {option: "Answer A", correct: true},
+      {option: "Answer B", correct: false}
     ]
   }
 ]
 
-console.log(questionList.answer)
+// logs "What is question 1?"
+console.log(questionList[0].question); 
+
+// logs "What is question 2?"
+console.log(questionList[1].question);
+
+// logs answer A from question 1
+console.log(questionList[0].answers[0].option)
+ 
+// logs answer B from question 2
+console.log(questionList[1].answers[1].option)
+
+//logs if Answer B from question 2 is true or false
+console.log(questionList[1].answers[1].correct)
+
+//TODO: write a function that specifically populates the question and its answers
+function newQuestion() {
+  for (i=0; i < questionList.length; i++){
+    questionList[i]
+    questionElement.innerHTML = questionList[i].question
+  }
+}
+
+  function newAnswers() {
+    for (i=0; i < questionList.answer.length; i++)
+    answerButtons.innerHTML = questionList.answer[i].option
+  }
