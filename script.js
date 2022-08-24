@@ -56,66 +56,43 @@ startButton.addEventListener('click', function(){
   displayNewQuestion(); //TODO:
 });
 
-//TODO: ...
 var index = 0; 
 var question;
 var newAnswerButton;
 
+const questionList = [
+  { //index 0
+    question: "What is question 1?",
+    answers: ["Q1 First answer", "Q1 second answer", "Q1 third answer"]
+  }, 
+  {
+    question: "What is question 2?",
+    answers: ["Q2 First answer", "q2 second answer", "q2 third answer"]
+  }, 
+  {
+    question: "What is question 3?",
+    answers: ["q3 First answer", "q3 second answer", "q3 third answer"]
+  }
+]
+
 var nextQuestion = function() {
-  //TODO: question not working
   //Populate question
   if (index < questionList.length) { //if index is less than number of question in the list
     var question = questionList[index].question //gets the string stored in question key
     questionElement.textContent = question;// put string into question element
-
+  //Populate answers
     var answers = questionList[index].answers //gets the array of answer options
+    answerArea.innerHTML = "";
     for (let i  = 0; i < answers.length; i ++){ // create a button for each answer in the area and set content to answer text
-      var newAnswerButton = document.createElement("button");
-      newAnswerButton.textContent = answers[i];
-      answerArea.appendChild(newAnswerButton)
+      var newAnswerButton = document.createElement("button"); //create btn
+      newAnswerButton.textContent = answers[i]; //btn text = answer choices
+      answerArea.appendChild(newAnswerButton); //add btn to answer area
+      newAnswerButton.addEventListener('click', function(){ 
+        index++; //when answer button clicked, index goes up by one
+        nextQuestion(); //nextQuestion populates in
+      })
     }
+  } else {
+    //TODO: GAME OVER if we run out of questions
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-//TODO: populates the new questions
-// for (var i = 0; i < answerButtons.length; i++){ 
-//   answerButtons[i].addEventListener('click', function(){
-//     console.log("answer clicked");
-//     newQuestion();/
-//     displayNewQuestion(); 
-//   })
-// }
-
-const questionList = [
-  { //index 0
-    question: "What is question 1?",
-    answers: ["First answer", "second answer"]
-  }, 
-  {
-    question: "What is question 2?",
-    answers: [ "First answer q2" , "Second answer q2"]
-  }
-]
-
-//TODO: write a function that specifically populates the question and its answers
-var question;
-var answers;
-
-//TODO: iterate through questionList array choosing each question string and answers array
-// var newQuestion = function(){
-//   for (i=0; i < questionList.length; i++){
-//     var question = questionList[i].question; //This is the string in each index of questionList.question
-    // var answers = questionList[i].answers //This is the array of strings containing the answer options in current question in questionList array
-//   }
-// }
