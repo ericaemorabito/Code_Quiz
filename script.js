@@ -84,13 +84,13 @@ const questionList = [
 
 //TODO: write a function that specifically populates the question and its answers
 var question;
-var answersArray;
+var answers;
 
 //TODO: iterate through questionList array choosing each question string and answers array
 var newQuestion = function(){
   for (i=0; i < questionList.length; i++){
     var question = questionList[i].question; //This is the string in each index of questionList.question
-    var answersArray = questionList[i].answers //This is the array of strings containing the answer options in current question in questionList array
+    var answers = questionList[i].answers //This is the array of strings containing the answer options in current question in questionList array
   }
 }
 newQuestion();
