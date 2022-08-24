@@ -1,22 +1,15 @@
-//Declare variables with get element by id 
-
-//Start Button
+//Selecting elements
 var startButton = document.getElementById("start_button");
-//Save score button
 var saveButton = document.getElementById("save_button");
-//Time remaining
 var timeRemaining = document.getElementById("seconds_remaining");
-//Correct and wrong message
-var correctOrWrongMessage = document.querySelector(".correct_wrong_message");
-//play Again button
 var playAgain = document.getElementById("play_again_button");
-//final score on game over page
 var finalScore = document.getElementById("final_score");
-
-//Each Page
 var welcomePage = document.getElementById("welcome_message");
 var gameOverPage = document.getElementById("game_over");
 var highScoresPage = document.getElementById("high_score_page");
+var questionPage = document.getElementById("question_page");
+var questionElement = document.getElementById("question");
+var answerButtons = document.querySelectorAll(".answer_btn");
 
 //Functions for showing and hiding each page
 var hideWelcome = function() {
@@ -51,15 +44,6 @@ function loseTenSeconds() {
 	time = time - 10;
 }
 
-//TODO: new code below
-// Selects the question section element
-var questionPage = document.getElementById("question_page");
-// Question <p> Element
-var questionElement = document.getElementById("question");
-//Answer buttons
-var answerButtons = document.querySelectorAll(".answer_btn");
-
-
 // Start Button Clicked - invokes the start Quiz
 startButton.addEventListener('click', function(){
   startQuiz()
@@ -77,7 +61,8 @@ function startQuiz() {
   showQuestionPage();
   };
 
-//TODO: Event listener for each answer button & populates the new questions
+//Event listener for each answer button
+//TODO: populates the new questions
 for (var i = 0; i < answerButtons.length; i++){ 
   answerButtons[i].addEventListener('click', function(){
     console.log("answer clicked");
