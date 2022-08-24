@@ -80,52 +80,52 @@ function startQuiz() {
 //TODO: Event listener for each answer button & populates the new questions
 for (var i = 0; i < answerButtons.length; i++){ 
   answerButtons[i].addEventListener('click', function(){
-    console.log("answer clicked")//function here
-    newQuestion();//when answer buttons clicked, populate question & buttons with new question & answer options from questions object
+    console.log("answer clicked");
+    chooseQuestion();//when answer buttons clicked, choose the next question, choose the next answers, and display those in HTML .innerHTML
+    chooseAnswers();
+    displayNewQuestion();
   })
 }
 
 const questionList = [
   { //index 0
     question: "What is question 1?",
-    answers: [
-      {option: "Answer A", correct: true},
-      {option: "Answer B", correct: false}
-    ]
+    answers: ["First answer", "second answer"]
   }, 
   {
     question: "What is question 2?",
-    answers: [
-      {option: "Answer A", correct: true},
-      {option: "Answer B", correct: false}
-    ]
+    answers: [ "2nd Q  1st answer" , "2nd Q 2nd answer"]
   }
 ]
 
-// logs "What is question 1?"
+// Acces which question- logs "What is question 1?"
 console.log(questionList[0].question); 
 
-// logs "What is question 2?"
-console.log(questionList[1].question);
-
-// logs answer A from question 1
-console.log(questionList[0].answers[0].option)
- 
-// logs answer B from question 2
-console.log(questionList[1].answers[1].option)
-
-//logs if Answer B from question 2 is true or false
-console.log(questionList[1].answers[1].correct)
+// Access answers within the question - logs Q1 A1
+console.log(questionList[0].answers[0]);
+console.log(questionList[0].answers)
 
 //TODO: write a function that specifically populates the question and its answers
-function newQuestion() {
+
+var currentQuestion;
+var currentAnswers;
+
+//Choose next question in the questionList array
+function chooseQuestion(){
   for (i=0; i < questionList.length; i++){
-    questionList[i]
-    questionElement.innerHTML = questionList[i].question
+    var currentQuestion = questionList[i];
+  }
+}
+console.log(questionList[1])
+
+function chooseAnswers(){
+  for (i=0; i < questionList.length; i++){
+    var currentAnswers = currentQuestion.answers[i]
   }
 }
 
-  function newAnswers() {
-    for (i=0; i < questionList.answer.length; i++)
-    answerButtons.innerHTML = questionList.answer[i].option
-  }
+//TODO: function to print the chosen question and answers to the HTML
+function displayNewQuestion(){
+  // currentQuestion = questionElement.innerHTML
+  // currentAnswers = answerButtons.innerHTML
+}
