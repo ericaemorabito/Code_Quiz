@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Quiz</title>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
   <!--CSS Linked-->
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -23,12 +25,11 @@
   <main>
     <!-- Welcome Message and Start Quiz -->
     <section id="welcome_message" data-state="visible">
-      <h1>Welcome to the Quiz</h1>
+      <h1>Welcome to the Coding Quiz</h1>
       <p>This is a coding quiz.</p>
       <p> You have 60 seconds to complete the quiz.</p>
       <p>If you answer incorrectly, you lose 10 seconds.</p>
-      <p>Good luck!</p>
-      </p>
+      <p id="good_luck">Good luck!</p>
       <button id="start_button">Start Quiz</button>
     </section>
 
@@ -41,7 +42,7 @@
 
     <!-- Game Over page -->
     <section id="game_over" data-state="hidden">
-      <h2>Game Over</h2>
+      <h2 id="game_over_title">Game Over</h2>
       <p>Your final score is: <span id="final_score">0</span></p>
       <form>
         <label for="enter_initials">Enter initials:</label>

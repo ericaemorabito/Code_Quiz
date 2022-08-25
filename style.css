@@ -1,3 +1,15 @@
+:root {
+  --light: #c5c6c8;
+  --dark: #0b0c10;
+  --bright: #66fcf1;
+  --medium: #4dc0bb;
+}
+
+* {
+  background-color: var(--dark);
+  font-size: 1rem;
+}
+
 header {
   display: inline;
   text-align: right;
@@ -13,8 +25,22 @@ header {
 }
 
 body {
+  color: var(--light);
   font-family: monospace;
   text-align: center;
+}
+
+/* Headings of welcome, game over, and high score page */
+h1,
+#game_over_title,
+#high_score_title {
+  color: var(--bright);
+  font-size: 2.2em;
+  font-family: 'Silkscreen', cursive;
+}
+
+h2 {
+  color: var(--bright)
 }
 
 /* Each section is centered */
@@ -35,16 +61,12 @@ section {
   align-items: center;
 }
 
-/* Buttons display in a collumn in the center */
-.answer_options {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 /* Buttons expand to fit content, have some margin and padding to make bigger*/
 button {
+  background-color: #66fcf1;
+  color: var(--dark);
+  border-right: 3px solid var(--medium);
+  border-bottom: 3px solid var(--medium);
   font-family: monospace;
   height: fit-content;
   width: fit-content;
@@ -52,10 +74,13 @@ button {
   margin: 1em;
 }
 
-/* Correct and Wrong Message */
-.correct_wrong_message {
-  color: green;
+#good_luck {
+  color: var(--bright);
+  font-style: italic;
 }
+
+/*TODO: I want the buttons on the question page stacked centrally in a column,
+
 
 /* Rendered pages hidden and visible */
 [data-state = "hidden"] {

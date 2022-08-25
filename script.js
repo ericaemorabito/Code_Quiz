@@ -73,7 +73,7 @@ function loseTenSeconds() {
 	time = time - 10;
 };
 
-//When page loads, high score page is disabled
+//When page loads, high score button is disabled
 var init = function(){
   highScoresButton.disabled = true;
 };
@@ -81,7 +81,6 @@ var init = function(){
 init();
 startQuiz();
 
-// Start Button Clicked - invokes the start Quiz
 function startQuiz() {
   startButton.addEventListener('click', function(){ //Start button clicked
   startTimer(); //timer begins
@@ -106,9 +105,9 @@ var nextQuestion = function() {
       answerArea.appendChild(newAnswerButton); //add btn to answer area
       newAnswerButton.addEventListener('click', function(){
         if (correct[i] === true){
-          alert('correct!')
+          alert('Correct!')
         } else if (correct[i] === false){
-          alert('wrong!')
+          alert('Wrong!')
           loseTenSeconds();
         }
         index++; //when answer button clicked, index goes up by one
