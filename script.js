@@ -3,7 +3,6 @@ var startButton = document.getElementById("start_button");
 var saveButton = document.getElementById("save_button");
 var highScoresButton = document.getElementById("high_scores_button");
 var timeRemaining = document.getElementById("seconds_remaining");
-var playAgain = document.getElementById("play_again_button");
 var finalScore = document.getElementById("final_score");
 var welcomePage = document.getElementById("welcome_message");
 var gameOverPage = document.getElementById("game_over");
@@ -21,16 +20,20 @@ var newAnswerButton;
 //Functions for showing and hiding each page
 var hideWelcome = function() {
   welcomePage.setAttribute("data-state", "hidden");
-}
+};
 var showGameOver = function() {
   gameOverPage.setAttribute("data-state", "visible");
-}
+};
 var showHighScores = function() {
   highScoresPage.setAttribute("data-state", "visible");
-}
+};
 var showQuestionPage = function() {
   questionPage.setAttribute("data-state", "visible");
-}
+};
+//TODO:
+var hideHighScores = function (){
+  highScoresPage.style.display = "none";
+};
 
 const questionList = [
   {
@@ -45,7 +48,7 @@ const questionList = [
     question: "What is question 3?",
     answers: ["q3 First answer", "q3 second answer", "q3 third answer"]
   }
-]
+];
 
 //Timer
 function startTimer() {
@@ -64,13 +67,19 @@ function startTimer() {
       highScoresButton.disabled = false;
     } 
   }, 1000);
-}
+};
 
 // Timer loses 10 seconds
 function loseTenSeconds() {
 	time = time - 10;
-}
+};
 
+//When page loads, high score page is disabled
+var init = function(){
+  highScoresButton.disabled = true;
+};
+
+init();
 startQuiz();
 
 // Start Button Clicked - invokes the start Quiz
@@ -81,7 +90,6 @@ function startQuiz() {
   showQuestionPage();
   nextQuestion();
   renderScores();
-  highScoresButton.disabled = true; //Highscore button disabled
 })};
 
 var nextQuestion = function() {
@@ -102,7 +110,7 @@ var nextQuestion = function() {
       })
     }
   } 
-}
+};
 
 //Save Button - puts initial and score into local storage and calls to render on high scores page
 saveButton.addEventListener('click', function(event){
@@ -111,7 +119,8 @@ saveButton.addEventListener('click', function(event){
   localStorage.setItem('initials', initials);
   localStorage.setItem('score', score);
   renderScores();
-})
+  alert('Score saved!');
+});
 
 function renderScores() {
   initials = localStorage.getItem('initials'); //get's the string's value == string value
@@ -120,14 +129,9 @@ function renderScores() {
   var newScoreLine = document.createElement('p'); //create's line for score
   highScoreTitle.appendChild(newScoreLine); //adds new line to highscore title
   newScoreLine.textContent = renderedScore; //sets initials into new score line <p>
-}
+};
 
-//TODO:
 highScoresButton.addEventListener('click', function(){
   gameOverPage.style.display = 'none'; //hides game over page
   showHighScores();
-  //add button
-  //set text to play again
-  //play again button has event listener
-  //calls startQuiz
-})
+  });
