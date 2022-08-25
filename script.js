@@ -35,10 +35,13 @@ function startTimer() {
     time--;
     timeRemaining.innerHTML = time;
 
-    //Timer stops at 0 seconds
-    if (time === 0) {
+    //Timer stops at 0 seconds & if all questions answered
+    if (time === 0 || index === questionList.length) {
       clearInterval(countdown);
-    }
+      timeRemaining.innerHTML = '0'
+      questionPage.style.display = 'none' //hides question page, shows, game over page
+      showGameOver();
+    } 
   }, 1000);
 }
 
@@ -52,8 +55,9 @@ startButton.addEventListener('click', function(){
   startTimer();
   hideWelcome();
   showQuestionPage();
-  nextQuestion(); //TODO:
-  displayNewQuestion(); //TODO:
+  nextQuestion(); 
+  endGame(); //TODO:
+  saveScores(); //TODO:
 });
 
 var index = 0; 
@@ -92,7 +96,23 @@ var nextQuestion = function() {
         nextQuestion(); //nextQuestion populates in
       })
     }
-  } else {
-    //TODO: GAME OVER if we run out of questions
+  } 
+}
+
+//TODO: end game
+var endGame = function () {
+  if (time === 0 || index === questionList.length) {
+    showGameOver();
+    time = 0;
   }
+}
+endGame();
+
+//TODO:
+var saveScores = function() {
+  //get input
+  //save time
+  //render to high scores page
+  //show high scores page when high scores button clicked
+  //enable only after game over
 }
