@@ -27,6 +27,7 @@ var showQuestionPage = function() {
 
 //Game starts with 60 seconds
 var time = 60;
+var score; 
 
 //Timer
 function startTimer() {
@@ -38,9 +39,10 @@ function startTimer() {
     //Timer stops at 0 seconds & if all questions answered
     if (time === 0 || index === questionList.length) {
       clearInterval(countdown);
-      timeRemaining.innerHTML = '0'
       questionPage.style.display = 'none' //hides question page, shows, game over page
       showGameOver();
+      score = time; 
+      finalScore.innerHTML = score //print score to page
     } 
   }, 1000);
 }
@@ -56,7 +58,6 @@ startButton.addEventListener('click', function(){
   hideWelcome();
   showQuestionPage();
   nextQuestion(); 
-  endGame(); //TODO:
   saveScores(); //TODO:
 });
 
@@ -99,17 +100,9 @@ var nextQuestion = function() {
   } 
 }
 
-//TODO: end game
-var endGame = function () {
-  if (time === 0 || index === questionList.length) {
-    showGameOver();
-    time = 0;
-  }
-}
-endGame();
-
 //TODO:
 var saveScores = function() {
+  
   //get input
   //save time
   //render to high scores page
