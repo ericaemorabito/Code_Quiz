@@ -7,6 +7,7 @@ var finalScore = document.getElementById("final_score");
 var welcomePage = document.getElementById("welcome_message");
 var gameOverPage = document.getElementById("game_over");
 var highScoresPage = document.getElementById("high_score_page");
+var highScoreTitle = document.getElementById("high_score_title");
 var questionPage = document.getElementById("question_page");
 var questionElement = document.getElementById("question");
 var answerArea = document.getElementById("answer_options")
@@ -58,7 +59,7 @@ startButton.addEventListener('click', function(){
   hideWelcome();
   showQuestionPage();
   nextQuestion(); 
-  saveScores(); //TODO:
+  renderScores();
 });
 
 var index = 0; 
@@ -100,12 +101,22 @@ var nextQuestion = function() {
   } 
 }
 
-//TODO:
-var saveScores = function() {
-  
-  //get input
-  //save time
-  //render to high scores page
-  //show high scores page when high scores button clicked
-  //enable only after game over
+//Save Button - puts initial and score into local storage and calls to render on HS page
+saveButton.addEventListener('click', function(event){
+  event.preventDefault();
+  var initials = document.getElementById('enter_initials').value;
+  localStorage.setItem('initials', initials);
+  localStorage.setItem('score', score);
+  renderScores();
+})
+
+function renderScores() {
+  initials = localStorage.getItem('initials'); //get's the string's value == string value
+  score = localStorage.getItem('score');
+  var renderedScore = initials.concat(' ', score); //initials and score together
+  var newScoreLine = document.createElement('p'); //create's line for score
+  highScoreTitle.appendChild(newScoreLine); //adds new line to highscore title
+  newScoreLine.textContent = renderedScore; //sets initials into new score line <p>
 }
+showHighScores();
+
