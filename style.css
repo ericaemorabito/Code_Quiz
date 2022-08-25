@@ -3,6 +3,8 @@
   --dark: #0b0c10;
   --bright: #66fcf1;
   --medium: #4dc0bb;
+  --correct: green;
+  --wrong: red;
 }
 
 * {
@@ -79,8 +81,21 @@ button {
   font-style: italic;
 }
 
-/*TODO: I want the buttons on the question page stacked centrally in a column,
+#answer_options {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+#game_over form,
+#gamve_over p {
+  padding: 20px;
+}
+
+input {
+  color: var(--light);
+}
 
 /* Rendered pages hidden and visible */
 [data-state = "hidden"] {

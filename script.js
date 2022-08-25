@@ -33,19 +33,52 @@ var showQuestionPage = function() {
 
 const questionList = [
   {
-    question: "What is question 1?",
-    answers: ["Q1 First answer", "Q1 second answer", "Q1 third answer"],
-    correct: [true, false, false]
+    question: "What does HTML stand for?",
+    answers: ["Hypertext Markup Language",
+              "Hypertext Marking Language",
+              "Hyperspeed Markup Language",
+              "Hypertext Marked Language"],
+    correct: [true, false, false, false]
   }, 
   {
-    question: "What is question 2?",
-    answers: ["Q2 First answer", "q2 second answer", "q2 third answer"],
-    correct: [true, false, false]
+    question: "What is an anchor tag in HTML?",
+    answers: ["tag used to type", 
+              "tag used to link a webpage",
+              "tag used to link an image",
+              "tag used to link Github"],
+    correct: [false, true, false, false]
   }, 
   {
-    question: "What is question 3?",
-    answers: ["q3 First answer", "q3 second answer", "q3 third answer"],
-    correct: [true, false, false]
+    question: "Where are HTML attributes defined?",
+    answers: ["within the element",
+              "in the element's opening tag",
+              "in the element's closing tag",
+              "in the element's children's tag"],
+    correct: [false, true, false, false]
+  },
+  {
+    question: "What are inline elements in HTML?",
+    answers: ["elements that take the full available width",
+              "elements that take the full available length", 
+              "elements that only take width required to fit into container",
+              "elements that take half the available width"],
+    correct: [false, false, true, false]
+  },
+  {
+    question: "What is the z-index in CSS?",
+    answers: ["a property specifying the stack order of an element",
+              "a property specifying the height order of an element", 
+              "a property specifying the click order of an element",
+              "a property specifying the return order of an element"],
+    correct: [true, false, false, false]
+  },
+  {
+    question: "Which CSS property affects the space between characters in a text?",
+    answers: ["letter-size",
+              "letter-spacing", 
+              "letter-space",
+              "letter-use"],
+    correct: [false, true, false, false]
   }
 ];
 
@@ -105,9 +138,8 @@ var nextQuestion = function() {
       answerArea.appendChild(newAnswerButton); //add btn to answer area
       newAnswerButton.addEventListener('click', function(){
         if (correct[i] === true){
-          alert('Correct!')
         } else if (correct[i] === false){
-          alert('Wrong!')
+          alert('You answered incorrectly!')
           loseTenSeconds();
         }
         index++; //when answer button clicked, index goes up by one
