@@ -30,23 +30,22 @@ var showHighScores = function() {
 var showQuestionPage = function() {
   questionPage.setAttribute("data-state", "visible");
 };
-//TODO:
-var hideHighScores = function (){
-  highScoresPage.style.display = "none";
-};
 
 const questionList = [
   {
     question: "What is question 1?",
-    answers: ["Q1 First answer", "Q1 second answer", "Q1 third answer"]
+    answers: ["Q1 First answer", "Q1 second answer", "Q1 third answer"],
+    correct: [true, false, false]
   }, 
   {
     question: "What is question 2?",
-    answers: ["Q2 First answer", "q2 second answer", "q2 third answer"]
+    answers: ["Q2 First answer", "q2 second answer", "q2 third answer"],
+    correct: [true, false, false]
   }, 
   {
     question: "What is question 3?",
-    answers: ["q3 First answer", "q3 second answer", "q3 third answer"]
+    answers: ["q3 First answer", "q3 second answer", "q3 third answer"],
+    correct: [true, false, false]
   }
 ];
 
@@ -100,11 +99,18 @@ var nextQuestion = function() {
   //Populate answers
     var answers = questionList[index].answers //gets the array of answer options
     answerArea.innerHTML = "";
-    for (let i  = 0; i < answers.length; i ++){ // create a button for each answer in the area and set content to answer text
+    var correct = questionList[index].correct
+    for (let i  = 0; i < answers.length; i ++){ // create a button for each answer in the area and set content to answer each value in array 
       var newAnswerButton = document.createElement("button"); //create btn
       newAnswerButton.textContent = answers[i]; //btn text = answer choices
       answerArea.appendChild(newAnswerButton); //add btn to answer area
-      newAnswerButton.addEventListener('click', function(){ 
+      newAnswerButton.addEventListener('click', function(){
+        if (correct[i] === true){
+          alert('correct!')
+        } else if (correct[i] === false){
+          alert('wrong!')
+          loseTenSeconds();
+        }
         index++; //when answer button clicked, index goes up by one
         nextQuestion(); //nextQuestion populates in
       })
