@@ -1,6 +1,7 @@
 //Selecting elements
 var startButton = document.getElementById("start_button");
 var saveButton = document.getElementById("save_button");
+var highScoresButton = document.getElementById("high_scores_button");
 var timeRemaining = document.getElementById("seconds_remaining");
 var playAgain = document.getElementById("play_again_button");
 var finalScore = document.getElementById("final_score");
@@ -11,6 +12,11 @@ var highScoreTitle = document.getElementById("high_score_title");
 var questionPage = document.getElementById("question_page");
 var questionElement = document.getElementById("question");
 var answerArea = document.getElementById("answer_options")
+var time = 60;
+var score; 
+var index = 0; 
+var question;
+var newAnswerButton;
 
 //Functions for showing and hiding each page
 var hideWelcome = function() {
@@ -26,48 +32,8 @@ var showQuestionPage = function() {
   questionPage.setAttribute("data-state", "visible");
 }
 
-//Game starts with 60 seconds
-var time = 60;
-var score; 
-
-//Timer
-function startTimer() {
-  //Count goes down by one second until it reaches 0
-  var countdown = setInterval(function () {
-    time--;
-    timeRemaining.innerHTML = time;
-
-    //Timer stops at 0 seconds & if all questions answered
-    if (time === 0 || index === questionList.length) {
-      clearInterval(countdown);
-      questionPage.style.display = 'none' //hides question page, shows, game over page
-      showGameOver();
-      score = time; 
-      finalScore.innerHTML = score //print score to page
-    } 
-  }, 1000);
-}
-
-// Timer loses 10 seconds
-function loseTenSeconds() {
-	time = time - 10;
-}
-
-// Start Button Clicked - invokes the start Quiz
-startButton.addEventListener('click', function(){
-  startTimer();
-  hideWelcome();
-  showQuestionPage();
-  nextQuestion(); 
-  renderScores();
-});
-
-var index = 0; 
-var question;
-var newAnswerButton;
-
 const questionList = [
-  { //index 0
+  {
     question: "What is question 1?",
     answers: ["Q1 First answer", "Q1 second answer", "Q1 third answer"]
   }, 
@@ -80,6 +46,43 @@ const questionList = [
     answers: ["q3 First answer", "q3 second answer", "q3 third answer"]
   }
 ]
+
+//Timer
+function startTimer() {
+  //Count goes down by one second until it reaches 0
+  var countdown = setInterval(function () {
+    time--;
+    timeRemaining.innerHTML = time;
+
+    //Timer stops at 0 seconds OR if all questions are answered
+    if (time === 0 || index === questionList.length) {
+      clearInterval(countdown);
+      questionPage.style.display = 'none' //hides question pages and reveals game over page
+      showGameOver();
+      score = time; 
+      finalScore.innerHTML = score //print score to page
+      highScoresButton.disabled = false;
+    } 
+  }, 1000);
+}
+
+// Timer loses 10 seconds
+function loseTenSeconds() {
+	time = time - 10;
+}
+
+startQuiz();
+
+// Start Button Clicked - invokes the start Quiz
+function startQuiz() {
+  startButton.addEventListener('click', function(){ //Start button clicked
+  startTimer(); //timer begins
+  hideWelcome();
+  showQuestionPage();
+  nextQuestion();
+  renderScores();
+  highScoresButton.disabled = true; //Highscore button disabled
+})};
 
 var nextQuestion = function() {
   //Populate question
@@ -101,7 +104,7 @@ var nextQuestion = function() {
   } 
 }
 
-//Save Button - puts initial and score into local storage and calls to render on HS page
+//Save Button - puts initial and score into local storage and calls to render on high scores page
 saveButton.addEventListener('click', function(event){
   event.preventDefault();
   var initials = document.getElementById('enter_initials').value;
@@ -118,5 +121,13 @@ function renderScores() {
   highScoreTitle.appendChild(newScoreLine); //adds new line to highscore title
   newScoreLine.textContent = renderedScore; //sets initials into new score line <p>
 }
-showHighScores();
 
+//TODO:
+highScoresButton.addEventListener('click', function(){
+  gameOverPage.style.display = 'none'; //hides game over page
+  showHighScores();
+  //add button
+  //set text to play again
+  //play again button has event listener
+  //calls startQuiz
+})
